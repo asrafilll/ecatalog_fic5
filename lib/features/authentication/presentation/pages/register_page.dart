@@ -59,12 +59,12 @@ class _RegisterPageState extends State<RegisterPage> {
                         SnackBar(content: Text(state.errorMessage)));
                   }
                   if (state is RegisterSuccess) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                        builder: (builder) => LoginPage(data: state.data),
-                      ),
-                    );
+                    // Navigator.push(
+                    //   context,
+                    //   MaterialPageRoute(
+                    //     builder: (builder) => HomePage(),
+                    //   ),
+                    // );
                   }
                 },
                 builder: (context, state) {
@@ -88,7 +88,15 @@ class _RegisterPageState extends State<RegisterPage> {
                 },
               ),
               const SizedBox(height: 8),
-              const SmallTextWidget(text: 'Already have an account? Login')
+              InkWell(
+                  onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (builder) => const LoginPage(),
+                        ),
+                      ),
+                  child: const SmallTextWidget(
+                      text: 'Already have an account? Login'))
             ],
           ),
         ),

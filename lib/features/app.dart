@@ -1,10 +1,17 @@
+import 'package:fic5_ecatalog_asrafilll/features/authentication/data/models/login_response_model.dart';
 import 'package:flutter/material.dart';
 
-class GettingStartedScreen extends StatelessWidget {
-  const GettingStartedScreen({super.key});
+class HomePage extends StatelessWidget {
+  const HomePage({super.key, required this.data});
+
+  final LoginResponseModel data;
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold();
+    return Scaffold(
+      body: Center(
+        child: Text(data.accessToken),
+      ),
+    );
   }
 }

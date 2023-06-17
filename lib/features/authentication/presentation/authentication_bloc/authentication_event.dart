@@ -7,3 +7,9 @@ class RegisterEvent extends AuthenticationEvent {
 
   RegisterEvent({required this.data});
 }
+
+class LoginEvent extends AuthenticationEvent {
+  final LoginRequestModel data;
+
+  LoginEvent({required this.data});
+}
