@@ -1,11 +1,13 @@
 import 'package:fic5_ecatalog_asrafilll/features/authentication/data/models/register_request_model.dart';
-import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/login_page.dart';
+import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/authentication_bloc/authentication_bloc.dart';
+import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/pages/login_page.dart';
 import 'package:fic5_ecatalog_asrafilll/shared/widget/atoms/h2_text_widget.dart';
 import 'package:fic5_ecatalog_asrafilll/shared/widget/atoms/small_text_widget.dart';
 import 'package:fic5_ecatalog_asrafilll/shared/widget/custom_textfield.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
+part '../widgets/sections/register_form_section.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
@@ -45,29 +47,11 @@ class _RegisterPageState extends State<RegisterPage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const H2TextWidget(text: 'Register'),
-              const SizedBox(height: 16),
-              CustomTextField(
-                label: 'Email',
-                hintText: 'Input Your Email',
-                suffixIcon: Icons.email,
-                controller: emailController,
+              _RegisterFormSection(
+                emailController: emailController!,
+                nameController: nameController!,
+                passwordController: passwordController!,
               ),
-              const SizedBox(height: 8),
-              CustomTextField(
-                label: 'Name',
-                hintText: 'Input Your Name',
-                suffixIcon: Icons.person,
-                controller: nameController,
-              ),
-              const SizedBox(height: 8),
-              CustomTextField(
-                label: 'Password',
-                hintText: 'Input Your Password',
-                suffixIcon: Icons.visibility,
-                obscureText: true,
-                controller: passwordController,
-              ),
-              const SizedBox(height: 32),
               BlocConsumer<AuthenticationBloc, AuthenticationState>(
                 listener: (context, state) {
                   if (state is RegisterFailed) {
@@ -94,6 +78,7 @@ class _RegisterPageState extends State<RegisterPage> {
                         email: emailController!.text,
                         password: passwordController!.text,
                       );
+
                       context
                           .read<AuthenticationBloc>()
                           .add(RegisterEvent(data: model));

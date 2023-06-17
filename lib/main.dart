@@ -1,6 +1,6 @@
 import 'package:fic5_ecatalog_asrafilll/features/authentication/data/datasources/auth_data_sources.dart';
-import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/bloc/authentication_bloc.dart';
-import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/register_page.dart';
+import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/authentication_bloc/authentication_bloc.dart';
+import 'package:fic5_ecatalog_asrafilll/features/authentication/presentation/pages/register_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
